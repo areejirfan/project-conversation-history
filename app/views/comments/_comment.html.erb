@@ -1,0 +1,5 @@
+<p class="bg-gray-100 p-3 rounded-lg shadow-sm flex items-center space-x-2">
+  <strong class="bg-blue-500 text-white px-2 py-1 rounded-md"><%= comment.user.username %></strong> 
+  <span class="text-gray-700"><%= comment.content %></span>
+  <span class="text-sm text-gray-500"><%= time_ago_in_words(comment.created_at) %> ago</span>
+</p>

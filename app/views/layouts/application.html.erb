@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Conversation History</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-50">
+      <div class="flex flex-row bg-blue-300">
+          <div class="px-2 m-8 text-2xl font-bold basis-290">
+            <%= link_to 'Project Conversation History', root_path %> <!-- Fixed here -->
+          </div>
+
+          <% unless [new_user_registration_path, new_user_session_path].include?(request.path) %>
+            <% if user_signed_in? %>
+            <div class="basis-16 pl-20 m-8">
+              <%= link_to "New", new_project_path %>
+            </div>
+            <div class="basis-16 pr-20 m-8">
+              <%= link_to "Logout", destroy_user_session_path, 
+                  data: { turbo_method: :delete } %>
+            </div>
+            <% end %>
+          <% end %>
+      </div>
+     
+    <main class="main-content-container">
+    <% flash.each do |type, msg| %>
+      <div class=" bg-green-300 alert <%= type == 'notice' ? 'alert-success' : 'alert-danger' %>">
+        <%= msg %>
+      </div>
+    <% end %>
+    
+      <%= yield %>
+    </main>
+  </body>
+</html>

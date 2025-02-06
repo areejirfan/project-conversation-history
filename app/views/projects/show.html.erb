@@ -1,0 +1,35 @@
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+  
+  <div class="mb-4">
+    <h1 class="text-2xl font-bold text-gray-800"><%= @project.title %></h1>
+    <p class="text-sm text-gray-500"><%= @project.status.humanize %></p>
+  </div>
+
+  <hr class="my-4 border-gray-300" />
+
+  <p class="text-gray-700 text-lg"><%= @project.description %></p>
+
+  <!-- Actions: Edit & Delete -->
+  <div class="mt-6 flex space-x-4">
+    <%= link_to "Edit", edit_project_path(@project), class: "px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition" %>
+    <%= link_to "Delete", project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+          class: "px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition" %>
+  </div>
+
+  <div class="mt-8 bg-gray-100 p-6 rounded-lg shadow">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Conversation History</h3>
+
+    <%= turbo_stream_from @project, :comments %>
+    
+    <div id="comments" class="space-y-4">
+      <%= render @project.comments.order(created_at: :desc) %>
+    </div>
+
+    <div class="mt-6">
+      <%= render 'comments/form', project: @project %>
+    </div>
+  </div>
+  
+</div>
+
+

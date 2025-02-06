@@ -1,0 +1,24 @@
+<%= turbo_stream.prepend "comments" do %>
+    <%= render @comment %>
+  <% end %>
+  
+  <div id="<%= dom_id(@comment) %>" class="comment">
+    <div class="comment-header">
+      <strong><%= @comment.user.email %></strong>
+      <small><%= time_ago_in_words(@comment.created_at) %> ago</small>
+    </div>
+    <div class="comment-body">
+      <%= @comment.content %>
+    </div>
+  </div>
+
+  <%= turbo_stream.prepend "comments" do %>
+    <div id="<%= dom_id(@comment) %>" class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+      <div class="flex items-center justify-between mb-2">
+        <strong class="text-blue-600"><%= @comment.user.username %></strong>
+        <small class="text-gray-500 text-sm"><%= time_ago_in_words(@comment.created_at) %> ago</small>
+      </div>
+        <p class="text-gray-800"><%= @comment.content %></p>
+    </div>
+  <% end %>
+  
