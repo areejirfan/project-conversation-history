@@ -9,7 +9,7 @@ Make sure you have the following installed:
 
 ### 1. Clone the Repository
 ```sh
-git clone git@github.com:areejirfan/project-conversation-history.git
+git clone git@github.com.example/project-conversation-history.git
 cd project-conversation-history
 ```
 
