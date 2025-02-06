@@ -1,5 +1,3 @@
-# db/seeds.rb
-
 # Create a test user
 user = User.create!(
   username: "Test User",
@@ -65,8 +63,6 @@ projects = [
 # Create the projects from the array
 projects.each do |project_data|
   project = Project.create!(project_data)
-
-  # Create 3 comments for each project
   comment1 = project.comments.create!(user: user, content: "Comment 1 for #{project.title}. The progress of this project is amazing, and I believe it's going to bring significant impact to the industry.")
   comment2 = project.comments.create!(user: user, content: "Comment 2 for #{project.title}. The potential of this project to solve real-world problems is immense, and I'm excited to see its development.")
   comment3 = project.comments.create!(user: user, content: "Comment 3 for #{project.title}. I have high hopes for this project, especially the collaborative aspects and the way it leverages cutting-edge technology.")

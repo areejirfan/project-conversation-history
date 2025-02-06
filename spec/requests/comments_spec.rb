@@ -15,7 +15,7 @@ RSpec.describe CommentsController, type: :controller do
           post :create, params: { project_id: project.id, comment: { content: "This is a comment" } }
         }.to change(project.comments, :count).by(1)
         expect(response).to redirect_to(project)
-        expect(flash[:notice]).to eq("Comment created successfully") # You can add this if you're redirecting with flash
+        expect(flash[:notice]).to eq("Comment created successfully")
       end
     end
 

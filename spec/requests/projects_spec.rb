@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
   let(:user) { User.create!(username: "Test User", email: "test@example.com", password: "password", password_confirmation: "password") }
-  # let(:project) { Project.create!(title: "Test Project", description: "Test description", status: :draft) }
   let!(:project) { Project.create!(title: "Test Project", description: "Test description", status: :draft) }
 
 
