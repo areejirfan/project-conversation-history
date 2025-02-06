@@ -1,5 +1,4 @@
 #   Project Conversation History
-## Project Setup
 ### Prerequisites
 Make sure you have the following installed:
 - Ruby 3.2.0
